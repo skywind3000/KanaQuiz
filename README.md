@@ -40,3 +40,7 @@ Read the kana in the square brackets `[ ]` and input its romanized name after th
 
 example:
 
+![](images/quiz-1.png)
+
+You can get a nice performance report after finished:
+
