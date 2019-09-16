@@ -44,3 +44,24 @@ example:
 
 You can get a nice performance report after finished:
 
+![](images/report.png)
+
+The history reports can always be queried by:
+
+```bash
+python3 kanaquiz.py -q
+```
+
+Check the hiragana/katakana chart at any time if you can't remember them:
+
+```bash
+python3 kanaquiz.py -l
+```
+
+Then you can study kanas right in your terminal:
+
+![](images/table.png)
+
+## Credit
+
+- Twitter: [@skywind3000](https://twitter.com/skywind3000)
