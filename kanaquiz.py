@@ -682,10 +682,10 @@ class GameQuiz (object):
         return comments[pos]
 
     def play (self, name, limit = None):
-        print('Type the correct romaji and hit Enter key to confirm.')
+        self.echo(-1, 'Type the correct romaji and hit Enter key to confirm.\n')
         self.echo(8, 'Press Enter to start ...\n')
         input()
-        print()
+        self.echo(-1, '\n')
         ts = time.time()
         performance = self.quiz.start(name, limit)
         ts = time.time() - ts
@@ -694,7 +694,7 @@ class GameQuiz (object):
             return -1
         self.config.save()
         accuracy = performance['accuracy']
-        print('Finished in %.2f seconds, press Enter to continue ...'%ts)
+        self.echo(-1, 'Finished in %.2f seconds, press Enter to continue ...\n'%ts)
         input()
         self.log(-1, 'Time: %s'%time.strftime('%Y-%m-%d %H:%M:%S'))
         self.log(-1, 'Response accuracy: %d of %d'%(performance['num_good'], performance['num_all']))
