@@ -52,9 +52,11 @@ example:
 
 ![](images/quiz-1.png)
 
-You can get a nice performance report after finished:
+There will be a nice performance report after finished:
 
 ![](images/report.png)
+
+Figure out which kana got the slowest response time (you are least likely to remember) and take time to practice.
 
 The history reports can always be queried by:
 
