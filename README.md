@@ -23,20 +23,30 @@ operations:
 
 ## Tutorial
 
-Choose hiragana quiz at first:
+List all the hiragana/katakana characters and their romanized names:
+
+```bash
+python3 kanaquiz.py -l
+```
+
+Study/review kanas right inside your terminal: 
+
+![](images/table.png)
+
+When you are ready, take the hiragana quiz at first:
 
 ```bash
 python3 kanaquiz.py -h
 ```
 
-Press Enter to start the quiz:
+click enter to start the quiz:
 
 ```
 [ よ ]  (1/46)
  ? {cursor}
 ```
 
-Read the kana in the square brackets `[ ]` and input its romanized name after the question mark `?` then press Enter to continue.
+Read the kana character in the square brackets `[ ]` and input its romanized name after the question mark `?` then press Enter to continue.
 
 example:
 
@@ -52,15 +62,14 @@ The history reports can always be queried by:
 python3 kanaquiz.py -q
 ```
 
-Check the hiragana/katakana chart at any time if you can't remember them:
+Check the hiragana/katakana chart at any time if you can't remember them by:
 
 ```bash
 python3 kanaquiz.py -l
 ```
 
-Then you can study kanas right in your terminal:
 
-![](images/table.png)
+
 
 ## Credit
 
