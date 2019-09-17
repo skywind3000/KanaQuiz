@@ -181,7 +181,7 @@ except ImportError:
 #----------------------------------------------------------------------
 # storage
 #----------------------------------------------------------------------
-STORAGE = '~/.local/share/var/kanaquiz'
+STORAGE = '~/.local/var/kanaquiz'
 
 
 #----------------------------------------------------------------------
@@ -502,9 +502,9 @@ class CoreQuiz (object):
     def single_quiz (self, word, heading = ''):
         romans = ''.join([ ROMAJI[c] for c in word ])
         self.config.console(-1)
-        self.echo(7, '[')
+        self.echo(7, '[ ')
         self.echo(14, word)
-        self.echo(7, ']')
+        self.echo(7, ' ]')
         if heading:
             self.echo(8, ' ' + heading)
         self.echo(-1, '\n')
