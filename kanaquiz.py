@@ -340,9 +340,9 @@ class configure (object):
         else:
             pad1 = 1
             pad2 = padding - pad1
-        self.echo(-1, ' ' * pad1) 
+        self.echo(7, ' ' * pad1) 
         self.echo(color, text)
-        self.echo(-1, ' ' * pad2)
+        self.echo(7, ' ' * pad2)
         return 1
 
     # color table
