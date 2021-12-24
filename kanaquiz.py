@@ -512,10 +512,14 @@ class CoreQuiz (object):
         ts = time.time()
         while 1:
             self.echo(7, '? ')
-            if sys.version_info[0] < 3:
-                answer = raw_input()
-            else:
-                answer = input()
+            try:
+                if sys.version_info[0] < 3:
+                    answer = raw_input()
+                else:
+                    answer = input()
+            except (EOFError, KeyboardInterrupt):
+                print('\nquit')
+                sys.exit(0)
             answer = answer.strip()
             if answer:
                 break
@@ -781,7 +785,7 @@ def main(argv = None):
     elif 'h' in options:
         game.play('hiragana')
     elif 'k' in options:
-        game.play('katagana')
+        game.play('katakana')
     elif 'd' in options:
         game.play('dakuon')
     elif 't' in options:
