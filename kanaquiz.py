@@ -799,7 +799,10 @@ def main(argv = None):
         if not os.path.exists(name):
             print('no history to display')
             return 1
-        os.system('less +G "%s"'%name)
+        if sys.platform.startswith('win'):
+            os.system('chcp 65001 > nul && more "%s"'%name)
+        else:
+            os.system('less +G "%s"'%name)
     return 0
 
 
