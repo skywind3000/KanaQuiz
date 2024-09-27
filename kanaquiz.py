@@ -521,8 +521,7 @@ class CoreQuiz (object):
                 else:
                     answer = input()
             except (EOFError, KeyboardInterrupt):
-                print('\nquit')
-                sys.exit(0)
+                raise
             answer = answer.strip()
             if answer:
                 break
@@ -566,11 +565,14 @@ class CoreQuiz (object):
         times = {}
         for k in tests:
             times[k] = None
-        for i in range(len(tests)):
-            word = tests[i]
-            head = '(%d/%d)'%(i + 1, len(tests))
-            elapse = self.single_quiz(word, head)
-            times[word] = elapse
+        try:
+            for i in range(len(tests)):
+                word = tests[i]
+                head = '(%d/%d)'%(i + 1, len(tests))
+                elapse = self.single_quiz(word, head)
+                times[word] = elapse
+        except (EOFError, KeyboardInterrupt):
+            pass
         available = []
         for word in times:
             score = times[word]
