@@ -326,11 +326,10 @@ class configure (object):
     # cell display
     def cell_echo (self, rows, row, col, csize):
         if row >= len(rows):
-            self.echo(-1, ' ' * (space + 2))
+            self.echo(-1, ' ' * (csize + 2))
             return 0
         if col >= len(rows[row]):
-            output = ' ' * (space + 2)
-            self.echo(-1, ' ' * (space + 2))
+            self.echo(-1, ' ' * (csize + 2))
             return 0
         color, text, align = rows[row][col]
         padding = 2 + csize - displaylen(text)
@@ -422,7 +421,7 @@ class configure (object):
         self.color_table(rows, style)
         output = self.string_buffer.getvalue()
         self.enable_stdout = old_stdout
-        self.enable_string = old_string
+        self.string_buffer = old_string
         return output
 
 
@@ -556,7 +555,7 @@ class CoreQuiz (object):
         if not name:
             return None
         if name == 'trinity':
-            tokens = self.trinity(name)
+            tokens = self.trinity('all')
         else:
             tokens = self.select(name)
         if limit:
@@ -707,7 +706,10 @@ class GameQuiz (object):
         input()
         self.log(-1, 'Time: %s'%time.strftime('%Y-%m-%d %H:%M:%S'))
         self.log(-1, 'Response accuracy: %d of %d'%(performance['num_good'], performance['num_all']))
-        self.log(-1, 'Average response time: %.2f'%(performance['brief_new'],))
+        if performance['brief_new'] is not None:
+            self.log(-1, 'Average response time: %.2f'%(performance['brief_new'],))
+        else:
+            self.log(-1, 'Average response time: -')
         self.log(-1, '')
         rows = []
         rows.append(['KANA', 'TIME', 'AVERAGE', 'BEST'])
@@ -822,7 +824,7 @@ if __name__ == '__main__':
         print(cfg.config)
         return 0
     def test2():
-        quiz = kquiz()
+        quiz = CoreQuiz()
         token = quiz.trinity('all')
         pprint.pprint(token)
         print(len(token), len(KANAS))
