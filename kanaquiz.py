@@ -763,6 +763,8 @@ def getopt(argv):
 #----------------------------------------------------------------------
 # main
 #----------------------------------------------------------------------
+KNOWN_OPTIONS = frozenset(['help', 'a', 'h', 'k', 'd', 't', 'l', 'o', 'q'])
+
 def main(argv = None):
     if not argv:
         argv = sys.argv
@@ -810,6 +812,11 @@ def main(argv = None):
             os.system('chcp 65001 > nul && more "%s"'%name)
         else:
             os.system('less +G "%s"'%name)
+    else:
+        unknown = sorted(k for k in options if k not in KNOWN_OPTIONS)
+        print('error: unknown option(s): %s'%(', '.join('-' + u for u in unknown)), file=sys.stderr)
+        print("use '%s {--help}' to display help"%program, file=sys.stderr)
+        return 2
     return 0
 
 
@@ -851,7 +858,7 @@ if __name__ == '__main__':
         return 0
 
     # test7()
-    main()
+    sys.exit(main())
 
 
 
